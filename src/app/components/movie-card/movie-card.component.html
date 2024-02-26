@@ -1,0 +1,19 @@
+<mat-card (click)="clicked.emit(info.id)">
+  <mat-card-header>
+    <mat-card-title>
+      {{ (info.title | slice:0:15) + (info.title.length > 15 ? "..." : "" ) }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if(info.poster_path){
+    <img
+      [src]="'https://image.tmdb.org/t/p/w500' + info.poster_path"
+      class="w-100 img-fluid"
+    />
+    }
+  </mat-card-content>
+  <mat-card-footer class="ms-3">
+    <div class="mt-2">Release date: <b> {{info.release_date | date : "dd/MM/yyyy"}}</b></div>
+    <p>Rating: <b>{{info.vote_average}}</b></p>
+  </mat-card-footer>
+</mat-card>
